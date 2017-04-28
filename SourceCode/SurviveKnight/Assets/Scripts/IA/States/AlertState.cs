@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Alert State: Tourn around*/
+
 public class AlertState : EnemyStateBase
 {
 	private float searchTimer;
@@ -32,12 +39,14 @@ public class AlertState : EnemyStateBase
 		}
 	}
 
+	/* Alert to Chase state */
 	private void ToChase(Transform player)
 	{
 		controlled.chaseTarget = player;
 		controlled.MakeTransition(EnemySatate.Chase);
 	}
 
+	/* Alert to Fire state */
 	private void ToFire(Transform player)
 	{
 		controlled.chaseTarget = player;
@@ -54,6 +63,7 @@ public class AlertState : EnemyStateBase
 			ToPatrolState();
 	}
 
+	/* Alert to Patrol state */
 	private void ToPatrolState()
 	{
 		searchTimer = 0f;

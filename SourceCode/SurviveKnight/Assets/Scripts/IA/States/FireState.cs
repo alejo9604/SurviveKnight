@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Fire State*/
+
 public class FireState : EnemyStateBase {
 
 
@@ -10,18 +17,6 @@ public class FireState : EnemyStateBase {
 	public override void UpdateState()
 	{
 		Fire();
-		//Look();
-	}
-
-
-	private void Look()
-	{
-		
-		Transform player = LookForPlayer();
-		if (player != null)
-			controlled.transform.LookAt(controlled.chaseTarget);
-		else
-			ToAlert();
 	}
 
 	private void Fire()
@@ -38,6 +33,8 @@ public class FireState : EnemyStateBase {
 		return (controlled.chaseTarget.position - controlled.transform.position).magnitude < controlled.detectionRange;
 	}
 
+
+	/* Fire to Alert state */
 	private void ToAlert()
 	{
 		controlled.chaseTarget = null;

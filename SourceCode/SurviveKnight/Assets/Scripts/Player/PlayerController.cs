@@ -53,13 +53,14 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate()
 	{
 		
-		//float Horz = CrossPlatformInputManager.GetAxis("Horizontal");
+		float Horz = CrossPlatformInputManager.GetAxis("Horizontal");
 		float Vert = CrossPlatformInputManager.GetAxis("Vertical");
 
 		//ThisTransform.rotation *= Quaternion.Euler(new Vector3(0, RotateSpeed * Time.deltaTime * Horz, 0));
 
 		//Calculate Move Dir
 		Velocity.z = Vert * MaxSpeed;
+		Velocity.x = Horz * MaxSpeed;
 
 		//Are we grounded?
 		IsGrounded = (DistanceToGround() < GroundedDist) ? true : false;

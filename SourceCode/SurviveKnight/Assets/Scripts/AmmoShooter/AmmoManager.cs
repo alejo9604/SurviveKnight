@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Pool controller for Ammo/Weapon objects*/
+
 public class AmmoManager : MonoBehaviour
 {
 	/* Ammo reference*/
@@ -9,6 +16,7 @@ public class AmmoManager : MonoBehaviour
 	/* Control Var.*/
 	public int PoolSize = 100;
 
+	/* Pool */
 	private Queue<Transform> AmmoQueue = new Queue<Transform>();
 	private GameObject[] AmmoArray;
 
@@ -36,6 +44,7 @@ public class AmmoManager : MonoBehaviour
 	}
 
 
+	/* Spwan Ammo for Simple shoot */
 	public static Transform SpawnAmmo(Vector3 Position, Quaternion Rotation)
 	{
 		Transform SpawnedAmmo = AmmoManagerSingleton.AmmoQueue.Dequeue();
@@ -51,6 +60,8 @@ public class AmmoManager : MonoBehaviour
 		return SpawnedAmmo;
 	}
 
+
+	/* Spwan Ammo for Player shoot */
 	public static Transform SpawnAmmo(Vector3 Position, Quaternion Rotation, BulletType Bullet)
 	{
 		Transform SpawnedAmmo = AmmoManagerSingleton.AmmoQueue.Dequeue();
@@ -71,6 +82,7 @@ public class AmmoManager : MonoBehaviour
 		return SpawnedAmmo;
 	}
 
+	/* Spwan Ammo for Enemy shoot */
 	public static Transform SpawnAmmoEnemy(Vector3 Position, Quaternion Rotation, BulletType Bullet)
 	{
 		Transform bullet = SpawnAmmo(Position, Rotation, Bullet);

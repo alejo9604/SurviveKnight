@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Spawn Health and Bullet ammunition*/
 public class SpwanHealth_Bulets : MonoBehaviour {
 
 	public GameObject HealthPrefab;

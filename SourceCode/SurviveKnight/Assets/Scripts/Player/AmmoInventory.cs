@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Developed by alejo9604
+*/
 
+
+/* Ammo inventory for some Weapons*/
 public class AmmoInventory : MonoBehaviour {
 
 	[Header("Ammos")]
@@ -24,6 +29,7 @@ public class AmmoInventory : MonoBehaviour {
 		}
 	}
 
+	/* If Player: Change to next Ammo */
 	public void NextAmmo()
 	{
 		actualAmmo++;
@@ -39,6 +45,8 @@ public class AmmoInventory : MonoBehaviour {
 		get{ return Ammos[actualAmmo].Ammunition > 0;}
 	}
 
+
+	/* Shoot: Spawn Ammo/Weapon */
 	public void UseAmmo()
 	{
 		if (CanShoot)

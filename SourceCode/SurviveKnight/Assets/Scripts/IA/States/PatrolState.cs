@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Patrol State: Random move*/
+
 public class PatrolState : EnemyStateBase {
 
 	private int nextWayPoint;

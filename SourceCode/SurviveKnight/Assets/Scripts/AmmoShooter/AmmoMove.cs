@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Ammo/Weapon Move*/
+
 public class AmmoMove : MonoBehaviour
 {
 	public float MaxSpeed = 1f;

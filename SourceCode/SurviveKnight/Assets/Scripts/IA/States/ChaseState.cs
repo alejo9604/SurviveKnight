@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Chase State */
+
 public class ChaseState : EnemyStateBase
 {
 	public ChaseState(EnemyIAController controlled) : base(controlled)
@@ -27,7 +34,6 @@ public class ChaseState : EnemyStateBase
 		controlled.navMeshAgent.SetDestination(controlled.chaseTarget.position);
 		if (IsCloseEnough())
 			controlled.Attack();
-			//GameObject.Destroy(controlled.chaseTarget.gameObject);
 	}
 
 	private bool IsCloseEnough()
@@ -35,6 +41,7 @@ public class ChaseState : EnemyStateBase
 		return (controlled.chaseTarget.position - controlled.transform.position).magnitude < 1.5;
 	}
 
+	/* Chase to Alert state */
 	private void ToAlert()
 	{
 		controlled.chaseTarget = null;

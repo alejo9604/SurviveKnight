@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Ammo/Weapon script controler*/ 
+
 public class Ammo : MonoBehaviour
 {
 	public float Damage = 100f;
@@ -27,6 +34,8 @@ public class Ammo : MonoBehaviour
 		ThisTransform.position += ThisTransform.forward * MaxSpeed * Time.deltaTime;
 	}
 
+
+	/* Touch with Enemy or Player: Die */
 	void OnTriggerEnter(Collider Col)
 	{
 		if (Col.tag == "Enemy" && !fromEnemy)
@@ -40,6 +49,7 @@ public class Ammo : MonoBehaviour
 			Col.transform.GetComponent<PlayerLive>().TakeDamage(Damage);
 		}
 	}
+
 
 	void Die()
 	{

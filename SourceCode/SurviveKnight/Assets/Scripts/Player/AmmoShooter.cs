@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+/*
+ * Developed by alejo9604
+*/
+
 
 [RequireComponent(typeof(AmmoInventory))]
 public class AmmoShooter : MonoBehaviour

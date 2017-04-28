@@ -13,7 +13,7 @@ public class CanvasManager : MonoBehaviour {
 
 	[Header("Score")]
 	public Text ScoreText;
-	private int score;
+	public int score;
 
 	[Header("Bullets")]
 	public Image BulletImg;

@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Developed by alejo9604
+*/
 
+
+/* Start scene script manager*/
 public class StartScript : MonoBehaviour {
 
 
 	public SkinnedMeshRenderer player;
 
-	public List<Texture> skins;
 	public Texture defaultSkin;
 	private int selectedSkin;
 
@@ -24,10 +28,10 @@ public class StartScript : MonoBehaviour {
 
 	public void setSkin(int skin)
 	{
-		if (skin < skins.Count)
+		if (skin < SceneMannager.SM.skins.Count)
 		{
 			selectedSkin = skin;
-			player.material.SetTexture("_MainTex", skins[skin]);
+			player.material.SetTexture("_MainTex", SceneMannager.SM.skins[skin]);
 		}
 		else {
 			selectedSkin = 0;

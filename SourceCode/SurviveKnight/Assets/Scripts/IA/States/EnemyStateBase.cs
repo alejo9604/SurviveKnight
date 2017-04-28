@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Abstract class and Enumeration for States*/
+
 public enum EnemySatate{
 	Patrol,
 	Alert,
@@ -28,6 +35,8 @@ public abstract class EnemyStateBase {
 
 	public abstract void UpdateState();
 
+
+	/* Look if PLayer in Vision range */
 	protected Transform LookForPlayer()
 	{
 

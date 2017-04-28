@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Enemy controller */
 [RequireComponent(typeof(NavMeshAgentController))]
 public class EnemyIAController : MonoBehaviour {
 
@@ -39,13 +46,17 @@ public class EnemyIAController : MonoBehaviour {
 	private void Awake()
 	{
 		navMeshAgent = GetComponent<NavMeshAgentController>();
+
+		/* Set States */
 		states = new Dictionary<EnemySatate, EnemyStateBase>();
 		states.Add(EnemySatate.Patrol, new PatrolState(this));
 		states.Add(EnemySatate.Alert, new AlertState(this));
 		states.Add(EnemySatate.Chase, new ChaseState(this));
 		states.Add(EnemySatate.Fire, new FireState(this));
 		currentState = states[EnemySatate.Patrol];
+
 		orginalPosition = transform.position;
+
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 
 		if(Fire)
@@ -57,9 +68,9 @@ public class EnemyIAController : MonoBehaviour {
 		currentState.UpdateState();
 	}
 
+	/* Change States */
 	public void MakeTransition(EnemySatate state)
 	{
-		//Debug.Log(state);
 		currentState = states[state];
 		currentState.StartState();
 	}
@@ -75,6 +86,7 @@ public class EnemyIAController : MonoBehaviour {
 		this.enabled = false;
 	}
 
+	/* Attack to Player */
 	public void Attack()
 	{
 		if (chaseTarget != null)

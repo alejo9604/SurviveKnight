@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* PLayer live controller*/
 public class PlayerLive : MonoBehaviour {
 
 	[Header("Live")]
@@ -16,13 +22,21 @@ public class PlayerLive : MonoBehaviour {
 	void Start () {
 		CanvasManager.CM.setPlayerLife(1);
 		initHealth = Health;
+
+		int skin = 0;
+		if (PlayerPrefs.HasKey("Skin"))
+			skin = PlayerPrefs.GetInt("Skin");
+
+		SkinnedMeshRenderer SMR = GetComponentInChildren<SkinnedMeshRenderer>();
+		SMR.material.SetTexture("_MainTex", SceneMannager.SM.skins[skin]);
+
 	}
 	
 
 	void Update () {
 	}
 
-
+	/* Take damege */
 	public void TakeDamage(float Damage)
 	{
 		if (!isAttack & !die)
@@ -34,11 +48,19 @@ public class PlayerLive : MonoBehaviour {
 				die = true;
 				GetComponent<Animator>().SetTrigger("Die");
 				GetComponent<PlayerController>().enabled = false;
+				Invoke("callEnd", 2.5f);
+			}
+			else {
+				Invoke("EndTakeDamage", DamageDelay);
 			}
 			isAttack = true;
-			Invoke("EndTakeDamage", DamageDelay);
 			CanvasManager.CM.setPlayerLife(Health / initHealth);
 		}
+	}
+
+	void callEnd()
+	{
+		SceneMannager.SM.LoadEnd(CanvasManager.CM.score);
 	}
 
 	void EndTakeDamage()
@@ -46,6 +68,7 @@ public class PlayerLive : MonoBehaviour {
 		isAttack = false;
 	}
 
+	/* Restore Health */
 	void AddHealth(float plusHealth)
 	{
 		Health += plusHealth;
@@ -54,7 +77,7 @@ public class PlayerLive : MonoBehaviour {
 		CanvasManager.CM.setPlayerLife(Health/initHealth);
 	}
 
-
+	/* Attack event */
 	void OnTriggerEnter(Collider Col)
 	{
 		if (Col.tag == "Health")

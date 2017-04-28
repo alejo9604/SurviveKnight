@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Developed by alejo9604
+*/
+
+
+/* Enemy Live controller*/
 public class EnemyLive : MonoBehaviour {
 
 	public float Health = 20;
@@ -10,10 +16,6 @@ public class EnemyLive : MonoBehaviour {
 
 	void Start () {
 		ThisAnimator = GetComponent<Animator>();
-	}
-
-	void Update () {
-		
 	}
 
 
@@ -29,6 +31,7 @@ public class EnemyLive : MonoBehaviour {
 			Invoke("DestroyThis", 1.2f);
 		}
 	}
+
 
 	public void DestroyThis()
 	{
